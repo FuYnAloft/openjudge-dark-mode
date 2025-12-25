@@ -6,7 +6,7 @@
     // 这部分代码会在页面刚开始加载，甚至 body 还没出现时运行
     // =========================================================
 
-    const savedTheme = localStorage.getItem('oj-theme-pref') || 'system';
+    const savedTheme = localStorage.getItem('oj-theme-pref') || 'dark';
 
     // 判断是否需要开启暗色
     function shouldEnableDark(theme) {
