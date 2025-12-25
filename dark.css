@@ -1,0 +1,322 @@
+/* 强制覆盖网页背景和主字体颜色 */
+body, div, p, table, td, th, li, span {
+    background-color: #1e1e1e !important;
+    color: #c9d1d9 !important;
+    background-image: none !important; /* 移除老式网页常用的背景图纹理 */
+}
+
+/* 处理链接颜色 */
+a {
+    color: #58a6ff !important;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #79c0ff !important;
+}
+
+/* 顶部导航栏 / 标题区域 */
+#header, .header, .top-nav {
+    background-color: #1e1e1e !important;
+    border-bottom: 1px solid #444 !important;
+}
+
+/* 输入示例/输出示例 的代码块 (通常是 pre 或 code 标签) */
+pre, code, .sample-input, .sample-output {
+    background-color: #0d1117 !important; /* 比背景更黑一点 */
+    color: #e6edf3 !important;
+    border: 1px solid #30363d !important;
+    padding: 10px;
+    display: block;
+}
+
+/* 输入框和文本域 (提交代码的地方) */
+input, textarea, select {
+    background-color: #0d1117 !important;
+    color: #fff !important;
+    border: 1px solid #30363d !important;
+}
+
+
+/* 针对 OpenJudge 特定的布局调整 */
+/* 比如题目描述的大框 */
+.problem-content {
+    background-color: #1e1e1e !important;
+}
+
+/* 题目列表的表格行交替颜色 (如果有) */
+tr.odd, tr:nth-child(odd) {
+    background-color: #262626 !important;
+}
+tr.even, tr:nth-child(even) {
+    background-color: #1e1e1e !important;
+}
+
+/* 隐藏可能存在的白色阴影或发光效果 */
+* {
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================================
+   修复图一上侧：主导航栏 (#mainNav)
+   ============================================================ */
+
+/* 1. 普通状态的导航按钮 */
+#mainNav li a {
+    background-color: #2d2d2d !important; /* 深灰色背景 */
+    background-image: none !important;    /* 移除原来的背景图 */
+    color: #c9d1d9 !important;            /* 浅灰色字 */
+    border: 1px solid #444 !important;    /* 稍微亮一点的边框 */
+    border-bottom: none !important;
+    text-shadow: none !important;
+}
+
+/* 2. 选中状态 (.current) 的导航按钮 */
+#mainNav li.current a {
+    background-color: #1e1e1e !important; /* 必须和网页背景色一致，制造“连接”感 */
+    color: #58a6ff !important;            /* 蓝色高亮字 */
+    font-weight: bold !important;
+    border-bottom: 1px solid #1e1e1e !important; /* 遮住底边框 */
+}
+
+/* 3. 鼠标悬停状态 */
+#mainNav li a:hover {
+    background-color: #383838 !important;
+    color: #fff !important;
+}
+
+
+/* ============================================================
+   修复图一右侧：功能标签页 (#topMenu)
+   (查看, 提交, 统计, 提问)
+   ============================================================ */
+
+/* 1. 整个标签条的容器 */
+#topMenu {
+    border-bottom: 1px solid #444 !important; /* 底部横线颜色变暗 */
+}
+
+/* 2. 普通标签按钮 */
+#topMenu li a {
+    background-color: #2d2d2d !important;
+    background-image: none !important;
+    color: #c9d1d9 !important;
+    border: 1px solid #444 !important;
+    text-shadow: none !important;
+}
+
+/* 3. 选中状态 (.current-show) 的标签按钮 */
+/* 这里最关键，原来的白色背景就是这里导致的 */
+#topMenu li.current-show a {
+    background-color: #1e1e1e !important; /* 变为黑色背景 */
+    color: #58a6ff !important;            /* 蓝色高亮 */
+    border-bottom: 1px solid #1e1e1e !important; /* 隐藏底边框，与下方内容融合 */
+    font-weight: bold;
+}
+
+/* 4. 鼠标悬停 */
+#topMenu li a:hover {
+    background-color: #383838 !important;
+    text-decoration: none !important;
+}
+
+
+/* ============================================================
+   修复搜索框 (.search-form)
+   ============================================================ */
+
+/* 1. 搜索输入框 */
+.search-form input[type="text"] {
+    background-color: #0d1117 !important; /* 极深色背景 */
+    color: #fff !important;
+    border: 1px solid #30363d !important;
+    box-shadow: none !important;
+}
+
+
+/* ============================================================
+   修复：判题结果状态颜色 (Accepted, Wrong Answer 等)
+   我们必须用 !important 覆盖掉之前通用的链接颜色设置
+   ============================================================ */
+
+/* 1. Accepted / 正确 (通常是蓝色或绿色) */
+/* 针对链接状态 和 em/span 纯文本状态 */
+a.result-right, em.result-right, .result-right {
+    color: #58a6ff !important; /* GitHub 风格的亮蓝色 */
+    /* font-weight: bold; */
+}
+
+/* 2. Wrong Answer / 错误 / TLE / MLE / RE (通常是红色) */
+a.result-wrong, em.result-wrong, .result-wrong {
+    color: #ff7b72 !important; /* 柔和的亮红色，在黑底上不刺眼 */
+    /* font-weight: bold; */
+}
+
+/* 3. Compile Error / 编译错误 (通常是别的颜色，比如绿色) */
+a.result-ce, em.result-ce, .result-ce {
+    color: #008000 !important; /* 绿色 */
+    /* font-weight: bold; */
+}
+
+/* 4. Pending / Waiting / 等待中 */
+a.result-pending, em.result-pending, .result-pending {
+    color: #008000 !important; /* 绿色 */
+    font-style: italic;
+}
+
+
+/* ============================================================
+   修复：代码语法高亮 (VS Code Dark 风格)
+   OpenJudge 使用 sh_ 前缀的类来做高亮
+   ============================================================ */
+
+/* 关键字 (import, def, for, in, if, else, print) - 粉紫色 */
+.sh_keyword {
+    color: #ff7b72 !important; /* 红色/粉色系 */
+    font-weight: bold !important;
+}
+
+/* 字符串 ('YES', "string") - 浅蓝色 */
+.sh_string {
+    color: #a5d6ff !important;
+}
+
+/* 数字 (0, 1, 10) - 浅蓝色 */
+.sh_number {
+    color: #79c0ff !important;
+}
+
+/* 函数名 (read, split, range, int, set, len) - 紫色 */
+.sh_function {
+    color: #d2a8ff !important;
+}
+
+/* 预处理指令 (import) / 装饰器 - 灰色或深紫 */
+.sh_preproc {
+    color: #ff7b72 !important; /* 有时也作为关键字处理 */
+}
+
+/* 符号 (=, ., +, :) - 灰白色 */
+.sh_symbol {
+    color: #e6edf3 !important;
+}
+
+/* 变量名 / 普通代码 - 默认灰白 */
+.sh_sourceCode {
+    color: #e6edf3 !important;
+}
+
+/* 注释 - 绿色 */
+.sh_comment {
+    color: #8b949e !important;
+    font-style: italic;
+}
+
+/* 类型 (int, set 这种有时候会被识别为 type) */
+.sh_type {
+    color: #79c0ff !important;
+}
+
+
+/* ============================================================
+   表格细节微调
+   ============================================================ */
+
+/* 你的图五中，表格里的文字颜色是对了，但看起来太挤，且没有边框线 */
+table td, table th {
+    border: 1px solid #30363d !important; /* 给单元格加个深色边框 */
+}
+
+/* 让表头背景更深一点，区分内容 */
+table thead td, table th {
+    background-color: #161b22 !important;
+    font-weight: bold;
+}
+
+/* ============================================================
+   修复：标题 (H1 - H6) 颜色太深看不清的问题
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important; /* 标题用纯白，突出显示 */
+    background-color: transparent !important;
+    text-shadow: none !important; /* 去掉可能存在的白色阴影 */
+    border-color: #444 !important; /* 如果标题有下划线，让它变暗 */
+}
+
+/* 有些特定页面的大标题可能用的是特殊类名 */
+.page-header, .page-title {
+    color: #ffffff !important;
+}
+
+
+
+
+/* ============================================================
+   修复：所有通用按钮 (深灰色风格)
+   逻辑：选中所有常见的按钮类型，但坚决排除搜索框(.search-form)里的按钮
+   ============================================================ */
+
+input[type="submit"], 
+input[type="button"], 
+button[type="reset"],
+.btn, 
+.status-go, 
+.submit-button,  /* 你刚刚提到的漏网之鱼 */
+.submit-reset,   /* 你刚刚提到的漏网之鱼 */
+/* 核心技巧：选中所有在 form 里的提交按钮，但前提是这个 form 不是搜索框 */
+form:not(.search-form) button[type="submit"] {
+    background-color: #3e3e3e !important; /* 纯暗灰 */
+    background-image: none !important;    /* 去掉老式光泽背景 */
+    color: #e6edf3 !important;            /* 亮灰白字 */
+    border: 1px solid #666 !important;    /* 深灰色边框 */
+    border-radius: 2px !important;        /* 统一微圆角 */
+    padding: 3px 12px !important;         /* 统一内边距 */
+    cursor: pointer;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* 通用按钮悬停高亮 */
+input[type="submit"]:hover, 
+input[type="button"]:hover, 
+button[type="reset"]:hover,
+.btn:hover, 
+.status-go:hover, 
+.submit-button:hover, 
+.submit-reset:hover,
+form:not(.search-form) button[type="submit"]:hover {
+    background-color: #525252 !important;
+    color: #fff !important;
+    border-color: #888 !important;
+}
+
+
+/* ============================================================
+   修复：搜索框按钮 (解决变白问题)
+   ============================================================ */
+/* 
+   OpenJudge 的搜索按钮是一个 <button> 里面带背景图。
+   我们不能给它加背景色，否则反色后会变成白块。
+*/
+.search-form button {
+    /* 1. 关键：背景透明，边框去掉 */
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    
+    /* 2. 只需要把原本黑色的图标反转成白色 */
+    /* 如果你的图标现在不可见，可能是因为之前被 background-image: none 删了。
+       这段代码没有删 background-image，应该能让它显示出来。*/
+    filter: invert(1) brightness(2) grayscale(100%) !important;
+    
+    /* 3. 鼠标手型 */
+    cursor: pointer;
+}
+
+/* 搜索框本身的输入条颜色再确认一下 */
+.search-form input[type="text"] {
+    background-color: #0d1117 !important;
+    color: #fff !important;
+    border: 1px solid #30363d !important;
+}
